@@ -37,6 +37,9 @@ export async function GET(request: NextRequest) {
     if (participantName === null) {
       return new NextResponse('Missing required query parameter: participantName', { status: 400 });
     }
+    if (identity === null) {
+      return new NextResponse('Missing required query parameter: identity', { status: 400 });
+    }
 
     // Generate participant token
     const participantToken = await createParticipantToken(
